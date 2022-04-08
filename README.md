@@ -1,10 +1,11 @@
 # SG-NN
 
-SG-NN presents a self-supervised approach that converts partial and noisy RGB-D scans into high-quality 3D scene reconstructions by inferring unobserved scene geometry. For more details please see our paper [
-SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans](https://arxiv.org/pdf/1912.00036.pdf).
+This forked repo follows SG-NN. This work presents a self-supervised approach that converts partial and noisy RGB-D scans into high-quality 3D scene reconstructions by inferring unobserved scene geometry. For more details please see our paper.
+- [SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans](https://arxiv.org/pdf/1912.00036.pdf).
 
 [<img src="sgnn.jpg">](https://arxiv.org/abs/1912.00036)
 
+In this work, we adapt this state of the art model to suit outdoor scenery, collected by LiDAR pointclouds from the nuScenes comprehensive dataset.
 
 ## Code
 ### Installation:  
@@ -26,7 +27,7 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 * See `python test_scene.py --help` for all test options. 
 * Example command: `python test_scene.py --gpu 0 --input_data_path ./data/mp_sdf_vox_2cm_input --target_data_path ./data/mp_sdf_vox_2cm_target --test_file_list ../filelists/mp-rooms_val-scenes.txt --model_path sgnn.pth --output ./output  --max_to_vis 20`
 
-### Data:
+### Data (Original)- ScanNet:
 * Scene data: 
   - [mp_sdf_vox_2cm_input.zip](http://kaldir.vc.in.tum.de/adai/SGNN/mp_sdf_vox_2cm_input.zip) (44G)
   - [mp_sdf_vox_2cm_target.zip](http://kaldir.vc.in.tum.de/adai/SGNN/mp_sdf_vox_2cm_target.zip) (58G)
@@ -34,13 +35,15 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
   - [completion_blocks.zip](http://kaldir.vc.in.tum.de/adai/SGNN/completion_blocks.zip) (88G)
 * [GenerateScans](datagen/GenerateScans) depends on the [mLib](https://github.com/niessner/mLib) library.
 
-## Citation:  
-If you find our work useful in your research, please consider citing:
-```
-@inproceedings{dai2020sgnn,
- title={SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans},
- author = {Dai, Angela and Diller, Christian and Nie{\ss}ner, Matthias},
- booktitle = {Proc. Computer Vision and Pattern Recognition (CVPR), IEEE},
- year = {2020}
-}
-```
+
+### Tasks:
+
+* .sfds: What is the format? How was it collected? 
+* Distance fields vs. Occupancy fields: Do we just expect the code to perform the same?
+    - The original code has "occ" lost, meaning it might already deal with occupancy fields.
+* Do we need to voxelize the input .pcd point clouds from nuScenes?
+    - We need to that with hierarchy, for different resolutions.
+* In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? (Dan - read about RGB-D!). If so, I assume it is not relevant to point clouds...
+
+
+
