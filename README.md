@@ -27,6 +27,7 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 * See `python test_scene.py --help` for all test options. 
 * Example command: `python test_scene.py --gpu 0 --input_data_path ./data/mp_sdf_vox_2cm_input --target_data_path ./data/mp_sdf_vox_2cm_target --test_file_list ../filelists/mp-rooms_val-scenes.txt --model_path sgnn.pth --output ./output  --max_to_vis 20`
 
+
 ### Data (Original)- ScanNet:
 * Scene data: 
   - [mp_sdf_vox_2cm_input.zip](http://kaldir.vc.in.tum.de/adai/SGNN/mp_sdf_vox_2cm_input.zip) (44G)
@@ -43,7 +44,12 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
     - The original code has "occ" lost, meaning it might already deal with occupancy fields.
 * Do we need to voxelize the input .pcd point clouds from nuScenes?
     - We need to that with hierarchy, for different resolutions.
-* In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? (Dan - read about RGB-D!). If so, I assume it is not relevant to point clouds...
+* In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? The RGB-D are two dimensional images, with 4 channels, where the 4th is the depth value . If so, I assume it is not relevant to point clouds...
 
 
+### Notes:
+* The model takes only the sdf as an input.
+* The original work creates its input by sampling a subset of the frames, to create an intermediate incomplete scene. In the new works. Should do the same for the nuScenes part.
+* World2grid is the affine transformation matrix of the RGB-D - useless for the pointclouds!
+* "Known" - TODO
 
