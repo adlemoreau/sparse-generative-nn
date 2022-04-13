@@ -45,7 +45,9 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 * Do we need to voxelize the input .pcd point clouds from nuScenes?
     - We need to that with hierarchy, for different resolutions.
 * In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? The RGB-D are two dimensional images, with 4 channels, where the 4th is the depth value . If so, I assume it is not relevant to point clouds...
-* Convert the tsdf into an occupancy grid, and train. See what changes does the model needs to go though.
+
+
+* Change the ckpt save functionality to keep checkpoints.
 
 
 ### Notes:
