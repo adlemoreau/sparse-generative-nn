@@ -47,7 +47,9 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 * In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? The RGB-D are two dimensional images, with 4 channels, where the 4th is the depth value . If so, I assume it is not relevant to point clouds...
 
 
-* Change the ckpt save functionality to keep checkpoints.
+* Modify the losses, to remove the l1 loss and stay only with BCE.
+    - Check again what the occ loss is, debug the compute_losses()
+* Overfit on one room only. Write the code that loads only one room - might be just to write a .txt file.
 
 
 ### Notes:
