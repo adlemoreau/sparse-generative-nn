@@ -49,7 +49,7 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 
 * Modify the losses, to remove the l1 loss and stay only with BCE.
     - Check again what the occ loss is, debug the compute_losses()
-* Overfit on one room only. Write the code that loads only one room - might be just to write a .txt file.
+* Convert the testing also to occ
 
 
 ### Notes:
