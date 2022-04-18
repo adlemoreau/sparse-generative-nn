@@ -49,7 +49,10 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 
 * Modify the losses, to remove the l1 loss and stay only with BCE.
     - Check again what the occ loss is, debug the compute_losses()
-* Convert the testing also to occ
+* Test with differenct truncations:
+  - 3
+  - 1
+  - 2e-2
 
 
 ### Notes:
