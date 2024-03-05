@@ -1,3 +1,8 @@
+This study is part of a project for the course "Point Clouds and 3D Modelling" in the master MVA, at ENS Paris-Saclay.
+The goal is to implement, experiment in Python and extend some parts of the **SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans** paper from Angela Dai, Christian Diller, and Matthias Nießner.
+
+Here is the description of the original project:
+
 # SG-NN
 
 This forked repo follows SG-NN. This work presents a self-supervised approach that converts partial and noisy RGB-D scans into high-quality 3D scene reconstructions by inferring unobserved scene geometry. For more details please see our paper.
@@ -35,29 +40,3 @@ Training is implemented with [PyTorch](https://pytorch.org/). This code was deve
 * Train data:
   - [completion_blocks.zip](http://kaldir.vc.in.tum.de/adai/SGNN/completion_blocks.zip) (88G)
 * [GenerateScans](datagen/GenerateScans) depends on the [mLib](https://github.com/niessner/mLib) library.
-
-
-### Tasks:
-
-* .sfds: What is the format? How was it collected? 
-* Distance fields vs. Occupancy fields: Do we just expect the code to perform the same?
-    - The original code has "occ" lost, meaning it might already deal with occupancy fields.
-* Do we need to voxelize the input .pcd point clouds from nuScenes?
-    - We need to that with hierarchy, for different resolutions.
-* In the .sfds file we hold the affine transformation matrix, which is then assigned to the variable "world2grid". Is it connected to the RGB-D? Is the TSDF created from 2D images? The RGB-D are two dimensional images, with 4 channels, where the 4th is the depth value . If so, I assume it is not relevant to point clouds...
-
-
-* Modify the losses, to remove the l1 loss and stay only with BCE.
-    - Check again what the occ loss is, debug the compute_losses()
-* Test with differenct truncations:
-  - 3
-  - 1
-  - 2e-2
-
-
-### Notes:
-* The model takes only the sdf as an input.
-* The original work creates its input by sampling a subset of the frames, to create an intermediate incomplete scene. In the new works. Should do the same for the nuScenes part.
-* World2grid is the affine transformation matrix of the RGB-D - useless for the pointclouds!
-* "Known" - TODO
-
