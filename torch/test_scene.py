@@ -76,14 +76,14 @@ def test(loss_weights, dataloader, output_vis, num_to_vis):
             sys.stdout.flush()
             hierarchy_factor = pow(2, args.num_hierarchy_levels-1)
             model.update_sizes(input_dim, input_dim // hierarchy_factor)
-            try:
-                if not args.cpu:
-                    inputs[1] = inputs[1].cuda()
-                output_sdf, output_occs = model(inputs, loss_weights)
-            except:
-                print('exception at %s' % sample['name'])
-                gc.collect()
-                continue
+            #try:
+            if not args.cpu:
+                inputs[1] = inputs[1].cuda()
+            output_sdf, output_occs = model(inputs, loss_weights)
+            #except:
+             #   print('exception at %s' % sample['name'])
+            #    gc.collect()
+             #   continue
 
             # remove padding
             dims = sample['orig_dims'][0]
@@ -118,7 +118,8 @@ def main():
     test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=1, shuffle=False, num_workers=2, collate_fn=scene_dataloader.collate)
 
     if os.path.exists(args.output):
-        raw_input('warning: output dir %s exists, press key to overwrite and continue' % args.output)
+        args.output
+        #raw_input('warning: output dir %s exists, press key to overwrite and continue' % args.output)
     if not os.path.exists(args.output):
         os.makedirs(args.output)
 

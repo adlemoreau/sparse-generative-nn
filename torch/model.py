@@ -235,7 +235,12 @@ class Refinement(nn.Module):
         #print('locs_unfilt', locs_unfilt.type(), locs_unfilt.shape, torch.min(locs_unfilt).item(), torch.max(locs_unfilt).item())
         #print('out', out.type(), out.shape, torch.min(out).item(), torch.max(out).item())
         #print('mask', mask.type(), mask.shape, torch.sum(mask).item())
+        
+        #print("locs_unfilt:", locs_unfilt.device)
+        #print("mask:", mask.device)
+        mask = mask.to(locs_unfilt.device)
         locs = locs_unfilt[mask]
+        #print("mask:", mask.device)
         
         out = torch.cat([out, sdf],1)
         if self.pass_feats and self.pass_occ:
@@ -312,6 +317,7 @@ class GenModel(nn.Module):
                 nf_in += nf
             self.surfacepred = SurfacePrediction(nf_in, nf, nf_out, self.refine_sizes[-1])
             print('#params surfacepred', count_num_model_params(self.surfacepred))
+    
     def dense_coarse_to_sparse(self, coarse_feats, coarse_occ, truncation):
         nf = coarse_feats.shape[1]
         batch_size = coarse_feats.shape[0]
@@ -332,7 +338,12 @@ class GenModel(nn.Module):
             feats = occ_feats
         elif self.pass_feats:
             feats = feats_feats
+        
+        #print("locs_unfilt:", locs_unfilt.device)
+        #print("mask:", mask.device)
+        mask = mask.to(locs_unfilt.device)
         locs = locs_unfilt[mask.view(-1)]
+        #print("mask:", mask.device)
         return locs, feats, [locs_unfilt, coarse_occ.view(-1, 2)]
 
     def concat_skip(self, x_from, x_to, spatial_size, batch_size):
