@@ -1,11 +1,13 @@
 This study is part of a project for the course "Point Clouds and 3D Modelling" in the master MVA, at ENS Paris-Saclay.
 The goal is to implement, experiment in Python and extend some parts of the **SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans** paper from Angela Dai, Christian Diller, and Matthias Nießner.
 
+In order to run the project, you can follow the instructions in the file *install.txt*.
+
 Here is the description of the original project:
 
 # SG-NN
 
-This forked repo follows SG-NN. This work presents a self-supervised approach that converts partial and noisy RGB-D scans into high-quality 3D scene reconstructions by inferring unobserved scene geometry. For more details please see our paper.
+This work presents a self-supervised approach that converts partial and noisy RGB-D scans into high-quality 3D scene reconstructions by inferring unobserved scene geometry. For more details please see our paper.
 - [SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans](https://arxiv.org/pdf/1912.00036.pdf).
 
 [<img src="sgnn.jpg">](https://arxiv.org/abs/1912.00036)

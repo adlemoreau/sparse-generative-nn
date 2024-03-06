@@ -15,4 +15,4 @@ Add data (input and target scans) in ./DATA/input_scans (.sdf files) and ./DATA/
 Upload the pretrained model sgnn.pth if needed
 Modify ../filelists/mp-rooms_test-scenes2.txt to list all the files to test
 See all test options: python test_scene.py —help
-Test: python test_scene.py --gpu 0 --input_data_path ./DATA/input_scans --target_data_path ./DATA/target_scans --test_file_list ../filelists/mp-rooms_test-scenes2.txt --model_path sgnn.pth --output ./output --max_to_vis 20
+Test: python test_scene.py --gpu 0 --input_data_path ./DATA/input_scans --target_data_path ./DATA/target_scans --test_file_list ../filelists/mp-rooms_test-scenes2.txt --model_path sgnn.pth --output ./output --max_to_vis 20 
