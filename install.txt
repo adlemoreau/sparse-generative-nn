@@ -16,10 +16,9 @@ Check that SparseConvNet is properly installed: cd examples
 python hello-world.py
 
 Setup the environment:
-Install missing packages: pip install scipy plyfile plotly
-cd sparse-generative-nn/torch
+Create a virtual environment with the requirements.txt
 Add data (input and target scans) in ./DATA/input_scans (.sdf files) and ./DATA/target_scans (both .sdf and .knw files)
-Upload the pretrained model sgnn.pth if needed
+Upload the pretrained model in sgnn.pth if needed
 
 Testing:
 Modify ../filelists/mp-rooms_test-scenes2.txt to list all the files to test
