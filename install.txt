@@ -1,7 +1,12 @@
-Clone the repository: git clone https://github.com/adlemoreau/sparse-generative-nn.git
+Clone the repository: 
+git clone https://github.com/adlemoreau/sparse-generative-nn.git
+
+Install the marching cubes:
 cd sparse-generative-nn/torch/marching_cubes
 python setup.py develop
-Install the marching cubes: python setup.py install
+python setup.py install
+
+Install SparseConvNet:
 Create folder ARSENAL in sparse-generative-nn/torch to clone SparseConvNet
 cd ../ARSENAL
 Clone the SparseConvNet repository: git clone https://github.com/facebookresearch/SparseConvNet.git
@@ -9,10 +14,14 @@ cd SparseConvNet
 bash develop.sh
 Check that SparseConvNet is properly installed: cd examples
 python hello-world.py
+
+Setup the environment:
 Install missing packages: pip install scipy plyfile plotly
 cd sparse-generative-nn/torch
 Add data (input and target scans) in ./DATA/input_scans (.sdf files) and ./DATA/target_scans (both .sdf and .knw files)
 Upload the pretrained model sgnn.pth if needed
+
+Testing:
 Modify ../filelists/mp-rooms_test-scenes2.txt to list all the files to test
 See all test options: python test_scene.py —help
-Test: python test_scene.py --gpu 0 --input_data_path ./DATA/input_scans --target_data_path ./DATA/target_scans --test_file_list ../filelists/mp-rooms_test-scenes2.txt --model_path sgnn.pth --output ./output --max_to_vis 20 
+Example command: python test_scene.py --gpu 0 --input_data_path ./DATA/input_scans --target_data_path ./DATA/target_scans --test_file_list ../filelists/mp-rooms_test-scenes2.txt --model_path sgnn.pth --output ./output --max_to_vis 20 

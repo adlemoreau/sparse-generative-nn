@@ -71,6 +71,9 @@ def test(loss_weights, dataloader, output_vis, num_to_vis):
     with torch.no_grad():
         for t, sample in enumerate(dataloader):
             inputs = sample['input']
+            # sdfs = sample['sdf']
+            # hierarchy = sample['hierarchy']
+            # known = sample['known']
             input_dim = np.array(sample['sdf'].shape[2:])
             sys.stdout.write('\r[ %d | %d ] %s (%d, %d, %d)    ' % (num_vis, num_to_vis, sample['name'], input_dim[0], input_dim[1], input_dim[2]))
             sys.stdout.flush()
@@ -79,6 +82,8 @@ def test(loss_weights, dataloader, output_vis, num_to_vis):
             #try:
             if not args.cpu:
                 inputs[1] = inputs[1].cuda()
+                #target_for_sdf, target_for_occs, target_for_hier = loss_util.compute_targets(sdfs.cuda(), hierarchy, args.num_hierarchy_levels, args.truncation, args.use_loss_masking, known)
+
             output_sdf, output_occs = model(inputs, loss_weights)
             #except:
              #   print('exception at %s' % sample['name'])
