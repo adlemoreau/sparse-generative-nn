@@ -4,6 +4,7 @@ This study is part of a project for the course "Point Clouds and 3D Modelling" i
 # SG-NN
 The goal is to implement, and experiment in Python the [SG-NN: Sparse Generative Neural Networks for Self-Supervised Scene Completion of RGB-D Scans](https://arxiv.org/pdf/1912.00036.pdf) paper from Angela Dai, Christian Diller, and Matthias Nießner.
 
+[<img src="sgnn.jpg">](https://arxiv.org/abs/1912.00036)
 
 ## Code
 ### Installation
